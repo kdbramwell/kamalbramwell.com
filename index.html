@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kamal Bramwell (Kam) is a Software Architect & Senior Mobile Engineer specializing in Kotlin Multiplatform, Android, iOS, and clean-room architectures.">
+    <meta name="keywords" content="Kamal Bramwell, Kam Bramwell, Software Architect, Senior Mobile Engineer, Kotlin Multiplatform, Android, iOS, Software Architecture">
+    <meta name="author" content="Kamal Bramwell">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Kamal Bramwell | Software Architect & Senior Mobile Engineer">
+    <meta property="og:description" content="Building high-performance mobile apps, clean-room architectures, and developer-first products.">
+    <meta property="og:url" content="https://kamalbramwell.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://github.com/user-attachments/assets/bf5cfaf5-c6b5-4ab4-b275-2c4852e08d90">
+
+    <title>Kamal Bramwell | Software Architect & Senior Mobile Engineer</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for zero-dependency) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold tracking-tight text-white hover:text-indigo-400 transition-colors">
+                        KB
+                    </a>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#about" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#projects" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="#skills" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Skills</a></li>
+                        <li><a href="#contact" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
+                    Software Architect & Senior Mobile Engineer
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed">
+                    Building high-performance mobile apps, clean-room architectures, and developer-first products. Specializing in Kotlin Multiplatform and cross-platform native experiences.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#projects" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-slate-950 bg-indigo-400 hover:bg-indigo-300 transition-colors">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-slate-700 text-base font-medium rounded-lg text-slate-200 hover:bg-slate-800 transition-colors">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 sm:py-24 bg-slate-900 border-y border-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-8">About Kamal</h2>
+                <div class="prose prose-invert prose-lg text-slate-300 max-w-3xl">
+                    <p>
+                        I am Kamal Bramwell (Kam), a Software Architect and Senior Mobile Engineer with a passion for elegant cross-platform engineering. My core focus lies in designing scalable architectures, pioneering zero-dependency robust solutions, and rapidly shipping high-quality products.
+                    </p>
+                    <p class="mt-4">
+                        With extensive experience in <strong>Kotlin Multiplatform</strong>, <strong>Jetpack Compose</strong>, and <strong>SwiftUI</strong>, I bridge the gap between platforms while maintaining strict native performance. I advocate for Trunk-Based Development, comprehensive Test-Driven Development (with manual test doubles), and End-to-End Encryption cryptographic protocol design.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 sm:py-24">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-12">Featured Projects</h2>
+
+                <div class="space-y-24">
+
+                    <!-- Spaces -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <h3 class="text-2xl font-bold text-white">Spaces</h3>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">2026</span>
+                            </div>
+                            <p class="text-slate-400 mb-6 leading-relaxed">
+                                A community-based structure combining Reddit-like discussions with gender-gated topics. Built with Kotlin and Compose Multiplatform for Android and iOS, backed by Firebase (Auth, Firestore, Crashlytics, Remote Config).
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Kotlin Multiplatform</span>
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Compose</span>
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Firebase</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">Google Play &rarr;</a>
+                                <a href="#" class="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">App Store &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="https://github.com/user-attachments/assets/bf5cfaf5-c6b5-4ab4-b275-2c4852e08d90" alt="Spaces Hero Screen" class="rounded-xl border border-slate-800 shadow-xl bg-slate-900 object-cover w-full h-auto aspect-[9/19.5]">
+                            <img src="https://github.com/user-attachments/assets/60fb56f1-38c4-44b3-96d7-d387b5d43eb2" alt="Spaces Confirm Join" class="rounded-xl border border-slate-800 shadow-xl bg-slate-900 object-cover w-full h-auto aspect-[9/19.5] translate-y-8">
+                        </div>
+                    </div>
+
+                    <!-- Personalities -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
+                        <div class="order-1 lg:order-2">
+                            <div class="flex items-center gap-3 mb-4">
+                                <h3 class="text-2xl font-bold text-white">Personalities</h3>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">2026</span>
+                            </div>
+                            <p class="text-slate-400 mb-6 leading-relaxed">
+                                Compose Multiplatform application calculating and visualizing personality blends combining MBTI archetypes with astrological zodiac inputs, utilizing a striking brutalist design system.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Compose Multiplatform</span>
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Brutalist UI</span>
+                            </div>
+                        </div>
+                        <div class="order-2 lg:order-1 bg-slate-900 rounded-xl border border-slate-800 aspect-[4/3] flex items-center justify-center p-8">
+                             <!-- Placeholder since no specific assets provided for Personalities -->
+                             <span class="text-slate-600 font-mono text-sm">Personalities Interface</span>
+                        </div>
+                    </div>
+
+                    <!-- NADA -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <h3 class="text-2xl font-bold text-white">NADA</h3>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/10 text-slate-400 border border-slate-500/20">2023</span>
+                            </div>
+                            <h4 class="text-lg text-slate-300 mb-4">Not Another Dating App</h4>
+                            <p class="text-slate-400 mb-6 leading-relaxed">
+                                An early dive into Jetpack Compose and Test-Driven Development (TDD) using mock data. Its architectural foundation and components were later imported into the Spaces project.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Jetpack Compose</span>
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">TDD</span>
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Clean Architecture</span>
+                            </div>
+                            <a href="https://github.com/kdbramwell" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">View Repository &rarr;</a>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="https://github.com/user-attachments/assets/48b78c6b-09de-44cb-b6b2-7e08de1d8fae" alt="NADA Start Screen" class="rounded-xl border border-slate-800 shadow-xl bg-slate-900 object-cover w-full h-auto aspect-[9/19.5]">
+                            <img src="https://github.com/user-attachments/assets/ff2b4e53-d9e2-4346-aad7-26a119f8f91d" alt="NADA Explore Screen" class="rounded-xl border border-slate-800 shadow-xl bg-slate-900 object-cover w-full h-auto aspect-[9/19.5] translate-y-8">
+                        </div>
+                    </div>
+
+                    <!-- Fyeo -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:flex-row-reverse">
+                        <div class="order-1 lg:order-2">
+                            <div class="flex items-center gap-3 mb-4">
+                                <h3 class="text-2xl font-bold text-white">Fyeo</h3>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/10 text-slate-400 border border-slate-500/20">2019 / 2026</span>
+                            </div>
+                            <h4 class="text-lg text-slate-300 mb-4">Confidential Instant Messaging</h4>
+                            <p class="text-slate-400 mb-6 leading-relaxed">
+                                Privacy-first messenger preventing screenshots, offering full media control, and pioneering blurred message previews. Modernized with clean-room E2EE architecture (X3DH, Double Ratchet) and Jetpack Compose.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">E2EE</span>
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">X3DH / Double Ratchet</span>
+                                <span class="font-mono text-xs px-2 py-1 rounded bg-slate-800 text-slate-300">Jetpack Compose</span>
+                            </div>
+                            <a href="#" class="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">Google Play &rarr;</a>
+                        </div>
+                        <div class="order-2 lg:order-1 grid grid-cols-2 gap-4">
+                            <img src="https://github.com/user-attachments/assets/c2f2b35c-da1f-46ab-88f2-4417716f3382" alt="Fyeo Blurred Photos" class="rounded-xl border border-slate-800 shadow-xl bg-slate-900 object-cover w-full h-auto aspect-[9/19.5]">
+                            <img src="https://github.com/user-attachments/assets/99e4ba0c-691f-4d38-a763-c7c0173ed3e3" alt="Fyeo Lock Screen" class="rounded-xl border border-slate-800 shadow-xl bg-slate-900 object-cover w-full h-auto aspect-[9/19.5] translate-y-8">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 sm:py-24 bg-slate-900 border-y border-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-12">Technical Skills & Philosophy</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Mobile & Platforms -->
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                            <h3 class="text-xl font-semibold text-white">Mobile & Platforms</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">Kotlin Multiplatform</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">Compose Multiplatform</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">Android (Jetpack Compose)</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">iOS (SwiftUI)</span>
+                        </div>
+                    </div>
+
+                    <!-- Architecture & Security -->
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                            <h3 class="text-xl font-semibold text-white">Architecture & Security</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">Clean Architecture</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">E2EE Cryptography</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">State Machines</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">SQLDelight</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">Firebase</span>
+                        </div>
+                    </div>
+
+                    <!-- Practices & Tooling -->
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
+                            <h3 class="text-xl font-semibold text-white">Practices & Tooling</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">Trunk-Based Development</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">TDD / Manual Fakes</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">CI/CD GitHub Actions</span>
+                            <span class="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-200 border border-slate-700">Agentic Workflows</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-white mb-6">Get in Touch</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-10">
+                Interested in collaboration, consulting, or discussing software architecture? Feel free to reach out.
+            </p>
+
+            <a href="mailto:peaks_barques0c@icloud.com" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/20 mb-12">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                Send an Email
+            </a>
+
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="https://github.com/kdbramwell" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <!-- Threads (Optional) -->
+                <a href="https://threads.net/@kam.palmer.876" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="Threads">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 14.536a2 2 0 1 1-2.828-2.828 2 2 0 0 1 2.828 2.828Z"/><path d="M17.5 9A5.5 5.5 0 1 0 12 14.5a5.5 5.5 0 0 0 5.5-5.5Z"/><path d="M17.5 9V5.5A2.5 2.5 0 0 0 15 3h-6A2.5 2.5 0 0 0 6.5 5.5v13A2.5 2.5 0 0 0 9 21h6a2.5 2.5 0 0 0 2.5-2.5V9Z"/></svg>
+                </a>
+            </div>
+
+            <p class="text-sm text-slate-500">
+                &copy; 2026 Kamal Bramwell. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
