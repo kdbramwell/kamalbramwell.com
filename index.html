@@ -271,7 +271,7 @@
                 Interested in collaboration, consulting, or discussing software architecture? Feel free to reach out.
             </p>
 
-            <a href="mailto:peaks_barques0c@icloud.com" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/20 mb-12">
+            <a id="email-link" href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/20 mb-12">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 Send an Email
             </a>
@@ -291,5 +291,14 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var emailLink = document.getElementById('email-link');
+            if (emailLink) {
+                var encodedEmail = 'cGVha3NfYmFycXVlczBjQGljbG91ZC5jb20=';
+                emailLink.href = 'mailto:' + atob(encodedEmail);
+            }
+        });
+    </script>
 </body>
 </html>
