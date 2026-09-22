@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#000000] text-[#F4F3EE]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline: Private Microjournal | Social Media for One</title>
+    <meta name="description" content="A private, local-first microjournal with rich text, photos, and voice notes. No feeds, no followers, zero cloud leaks.">
+    <meta name="keywords" content="Timeline, Private Microjournal, Microblogging, Journaling, Local-first, SQLite, iOS, Android, Kamal Bramwell">
+    <meta name="author" content="Kamal Bramwell">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kamalbramwell.com/timeline">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kamalbramwell.com/timeline">
+    <meta property="og:title" content="Timeline: Private Microjournal | Social Media for One">
+    <meta property="og:description" content="A private, local-first microjournal with rich text, photos, and voice notes. No feeds, no followers, zero cloud leaks.">
+    <meta property="og:image" content="https://kamalbramwell.com/assets/timeline/screenshots/01-feed.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kamalbramwell.com/timeline">
+    <meta name="twitter:title" content="Timeline: Private Microjournal | Social Media for One">
+    <meta name="twitter:description" content="A private, local-first microjournal with rich text, photos, and voice notes. No feeds, no followers, zero cloud leaks.">
+    <meta name="twitter:image" content="https://kamalbramwell.com/assets/timeline/screenshots/01-feed.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via official CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+                    },
+                    colors: {
+                        oled: '#000000',
+                        canvas: '#08080A',
+                        surface: '#121215',
+                        'surface-hover': '#18181D',
+                        hairline: '#222227',
+                        bone: '#F4F3EE',
+                        muted: '#8E8E93',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 80px -20px rgba(255, 255, 255, 0.08)',
+                        'device': '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar hiding utility for modern carousels */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Device glare and ambient highlights */
+        .glass-panel {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        }
+    </style>
+</head>
+<body class="bg-oled text-bone font-sans antialiased selection:bg-bone/20 selection:text-bone min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Subtle Ambient Top Light -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[360px] bg-gradient-to-b from-white/[0.04] via-white/[0.01] to-transparent blur-3xl pointer-events-none -z-10" aria-hidden="true"></div>
+
+    <!-- 1. Minimal Navigation Bar -->
+    <header class="fixed top-0 w-full z-50 bg-oled/85 backdrop-blur-xl border-b border-hairline/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Wordmark -->
+                <div class="flex items-center gap-3">
+                    <a href="/timeline" class="text-xl sm:text-2xl font-bold tracking-tight text-bone hover:text-white transition-colors flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-bone inline-block"></span>
+                        <span>timeline</span>
+                    </a>
+                    <span class="hidden sm:inline-block text-[11px] font-mono uppercase tracking-widest text-muted/70 px-2 py-0.5 rounded border border-hairline bg-surface/50">
+                        Private Microjournal
+                    </span>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="flex items-center gap-5 sm:gap-8 text-sm font-medium">
+                    <a href="/timeline/privacy" class="text-muted hover:text-bone transition-colors text-xs sm:text-sm font-mono uppercase tracking-wider">
+                        Privacy
+                    </a>
+                    <a href="mailto:timeline@kamalbramwell.com" class="text-muted hover:text-bone transition-colors text-xs sm:text-sm font-mono uppercase tracking-wider">
+                        Support
+                    </a>
+                    <a href="#download" class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium text-bone bg-surface border border-hairline hover:border-muted/50 transition-all">
+                        Get App
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24 sm:pt-32">
+        <!-- 2. Hero Section -->
+        <section class="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-8 sm:pt-14 pb-16 sm:pb-24">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <!-- Version Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono font-medium bg-surface border border-hairline text-muted mb-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                    <span>Version 0.1.0 &bull; Now in Review / Available for iOS &amp; Android</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-bone leading-[1.08] mb-6 [text-wrap:balance]">
+                    Social media for one.
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-base sm:text-xl text-muted leading-relaxed font-normal mb-10 max-w-2xl mx-auto [text-wrap:pretty]">
+                    The speed, fluid muscle memory, and rich media feed of modern microblogging—without the audience, algorithms, or vanity metrics. 100% local-first.
+                </p>
+
+                <!-- Primary CTAs (App Store & Google Play) -->
+                <div id="download" class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto">
+                    <!-- Apple App Store Button -->
+                    <a href="mailto:timeline@kamalbramwell.com?subject=Timeline%20iOS%20Access%20Request" 
+                       class="w-full sm:w-auto min-w-[210px] inline-flex items-center justify-between px-5 py-3 rounded-xl bg-surface border border-hairline hover:border-bone/30 hover:bg-surface-hover transition-all text-left group shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <!-- Apple Icon -->
+                            <svg class="w-6 h-6 text-bone fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.65 1.35-.58.66-1.08 1.73-.95 2.76 1.01.08 2.05-.51 2.68-1.26z"/>
+                            </svg>
+                            <div>
+                                <span class="block text-[10px] font-mono uppercase tracking-wider text-muted group-hover:text-bone/80 transition-colors">Download on</span>
+                                <span class="block text-sm font-semibold text-bone">App Store</span>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 whitespace-nowrap ml-2">
+                            In Review
+                        </span>
+                    </a>
+
+                    <!-- Google Play Store Button -->
+                    <a href="mailto:timeline@kamalbramwell.com?subject=Timeline%20Android%20Access%20Request" 
+                       class="w-full sm:w-auto min-w-[210px] inline-flex items-center justify-between px-5 py-3 rounded-xl bg-surface border border-hairline hover:border-bone/30 hover:bg-surface-hover transition-all text-left group shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <!-- Google Play Icon -->
+                            <svg class="w-6 h-6 text-bone fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M3.609 1.814L13.792 12 3.61 22.186a1.954 1.954 0 01-.61-.39 2.073 2.073 0 01-.5-1.428V3.632c0-.53.18-1.026.5-1.428.18-.228.39-.36.61-.39zm11.246 11.248l2.553 2.553-12.72 7.34 10.167-9.893zm0-2.124L4.688 1.045l12.72 7.34-2.553 2.553zm1.488 1.487l3.66-2.113c1.077-.622 1.077-1.637 0-2.26l-3.66-2.114-1.488 1.487 1.488 1.487 1.488 1.487-1.488 1.487 1.488 1.487-1.488 1.486 1.488-1.486z"/>
+                            </svg>
+                            <div>
+                                <span class="block text-[10px] font-mono uppercase tracking-wider text-muted group-hover:text-bone/80 transition-colors">Get it on</span>
+                                <span class="block text-sm font-semibold text-bone">Google Play</span>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 whitespace-nowrap ml-2">
+                            In Review
+                        </span>
+                    </a>
+                </div>
+
+                <p class="text-xs font-mono text-muted/70 mt-4">
+                    Early builds rolling out via Apple TestFlight &amp; Google Play Console.
+                </p>
+            </div>
+
+            <!-- Hero Mockup Preview -->
+            <div class="relative max-w-sm sm:max-w-md mx-auto">
+                <!-- Device Glow Effect -->
+                <div class="absolute -inset-1.5 bg-gradient-to-b from-white/15 to-transparent rounded-[52px] blur-xl opacity-60 -z-10" aria-hidden="true"></div>
+
+                <!-- Realistic Titanium/OLED Device Frame -->
+                <div class="relative bg-canvas p-2.5 sm:p-3 rounded-[46px] sm:rounded-[52px] ring-1 ring-white/15 shadow-device">
+                    <!-- Outer Hairline & Speaker Notch -->
+                    <div class="relative rounded-[38px] sm:rounded-[42px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5]">
+                        <!-- Dynamic Island / Speaker Pill -->
+                        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20 flex items-center justify-between px-2.5 border border-white/10" aria-hidden="true">
+                            <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-950/60 border border-indigo-500/30"></span>
+                        </div>
+
+                        <!-- Screenshot Image with Fallback -->
+                        <picture>
+                            <source srcset="/assets/timeline/screenshots/01-feed.png" type="image/png">
+                            <img src="/assets/timeline/screenshots/01-feed.png" 
+                                 alt="Timeline App - Social Media for One feed interface" 
+                                 width="1170" 
+                                 height="2532"
+                                 fetchpriority="high"
+                                 class="w-full h-full object-cover object-top select-none pointer-events-none"
+                                 onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+                        </picture>
+
+                        <!-- High-Fidelity Wireframe Fallback (revealed only if image fails) -->
+                        <div class="hidden w-full h-full bg-canvas p-6 pt-12 flex flex-col justify-between text-left font-mono">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between pb-3 border-b border-hairline">
+                                    <span class="text-xs text-muted">09:41</span>
+                                    <span class="text-xs font-bold text-bone">timeline</span>
+                                    <span class="text-xs text-muted">100%</span>
+                                </div>
+                                <div class="p-4 rounded-xl bg-surface border border-hairline space-y-2">
+                                    <span class="text-[10px] text-muted">JUST NOW &bull; #THOUGHTS</span>
+                                    <p class="text-sm text-bone font-sans">No likes. No comments. Just pure, uninhibited thought capture.</p>
+                                </div>
+                                <div class="p-4 rounded-xl bg-surface border border-hairline space-y-2">
+                                    <span class="text-[10px] text-muted">2H AGO &bull; VOICE MEMO</span>
+                                    <div class="flex items-center gap-2 text-xs text-bone">
+                                        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                                        <span>0:42 &bull; Spontaneous Voice Note</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center py-2 text-[11px] text-muted border-t border-hairline">
+                                100% Local SQLite &bull; Private
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Core Feature Pillars (The 4 Invariants) -->
+        <section class="py-20 sm:py-28 bg-canvas border-y border-hairline">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="max-w-2xl mb-14 sm:mb-18">
+                    <span class="text-xs font-mono uppercase tracking-widest text-muted block mb-3">Core Invariants</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-bone tracking-tight mb-4">
+                        Engineered for solitude. Built for permanence.
+                    </h2>
+                    <p class="text-base sm:text-lg text-muted">
+                        Every design choice in Timeline strips away the attention-economy toxicity of modern feeds, leaving you with an intimate, frictionless canvas for personal reflection.
+                    </p>
+                </div>
+
+                <!-- 2x2 Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                    <!-- Pillar 1: Solo Social Stream -->
+                    <article class="p-7 sm:p-9 rounded-2xl bg-surface border border-hairline hover:border-muted/40 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-canvas border border-hairline flex items-center justify-center text-bone">
+                                    <!-- Stream / Feed Icon -->
+                                    <svg class="w-6 h-6 stroke-current fill-none stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-xs text-muted/80 tracking-widest">INVARIANT // 01</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-bone mb-3 group-hover:text-white transition-colors">
+                                Solo Social Stream
+                            </h3>
+                            <p class="text-sm sm:text-base text-muted leading-relaxed">
+                                Reverse-chronological capture with zero vanity metrics. No public counters, no followers, no broadcast pressures. All the familiar speed and fluid gesture ergonomics of modern microblogging, without the audience.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-hairline/60 flex items-center gap-2 font-mono text-xs text-muted">
+                            <span class="w-1.5 h-1.5 rounded-full bg-bone"></span>
+                            <span>No algorithms &bull; No likes &bull; Chronological</span>
+                        </div>
+                    </article>
+
+                    <!-- Pillar 2: Text, Photos & Voice Memos -->
+                    <article class="p-7 sm:p-9 rounded-2xl bg-surface border border-hairline hover:border-muted/40 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-canvas border border-hairline flex items-center justify-center text-bone">
+                                    <!-- Multi-format Media Icon -->
+                                    <svg class="w-6 h-6 stroke-current fill-none stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15a3 3 0 01-3-3V4.5a3 3 0 116 0V12a3 3 0 01-3 3z"/>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-xs text-muted/80 tracking-widest">INVARIANT // 02</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-bone mb-3 group-hover:text-white transition-colors">
+                                Text, Photos &amp; Voice Memos
+                            </h3>
+                            <p class="text-sm sm:text-base text-muted leading-relaxed">
+                                Rich multi-format micro-journaling made instant. Attach spontaneous snapshots and one-tap voice memos with minimal, lightweight playback pills. Organize thoughts naturally using inline #hashtags.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-hairline/60 flex items-center gap-2 font-mono text-xs text-muted">
+                            <span class="w-1.5 h-1.5 rounded-full bg-bone"></span>
+                            <span>Voice waveforms &bull; High-res photos &bull; Tags</span>
+                        </div>
+                    </article>
+
+                    <!-- Pillar 3: Biometric Vault & Tap-to-Reveal -->
+                    <article class="p-7 sm:p-9 rounded-2xl bg-surface border border-hairline hover:border-muted/40 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-canvas border border-hairline flex items-center justify-center text-bone">
+                                    <!-- Lock / Vault Icon -->
+                                    <svg class="w-6 h-6 stroke-current fill-none stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-xs text-muted/80 tracking-widest">INVARIANT // 03</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-bone mb-3 group-hover:text-white transition-colors">
+                                Biometric Vault &amp; Tap-to-Reveal
+                            </h3>
+                            <p class="text-sm sm:text-base text-muted leading-relaxed">
+                                Complete shoulder-surfing obscurity. Secure your journal with Face ID, Touch ID, or Biometric fingerprint unlock. Tap-to-reveal content masking keeps sensitive entries blurred until you intentionally tap to inspect them.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-hairline/60 flex items-center gap-2 font-mono text-xs text-muted">
+                            <span class="w-1.5 h-1.5 rounded-full bg-bone"></span>
+                            <span>Face ID &bull; Fingerprint &bull; Anti-shoulder surfing</span>
+                        </div>
+                    </article>
+
+                    <!-- Pillar 4: 100% Local-First & Zero Leaks -->
+                    <article class="p-7 sm:p-9 rounded-2xl bg-surface border border-hairline hover:border-muted/40 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-canvas border border-hairline flex items-center justify-center text-bone">
+                                    <!-- Local Database Icon -->
+                                    <svg class="w-6 h-6 stroke-current fill-none stroke-2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-xs text-muted/80 tracking-widest">INVARIANT // 04</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-bone mb-3 group-hover:text-white transition-colors">
+                                100% Local-First &amp; Zero Leaks
+                            </h3>
+                            <p class="text-sm sm:text-base text-muted leading-relaxed">
+                                Stored strictly on your sandboxed device SQLite database. Zero external servers, zero telemetry SDKs, zero analytics trackers, and zero third-party cloud synchronization. Your journal never touches our hardware because we operate no servers.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-hairline/60 flex items-center gap-2 font-mono text-xs text-muted">
+                            <span class="w-1.5 h-1.5 rounded-full bg-bone"></span>
+                            <span>Sandboxed SQLite &bull; Zero telemetry &bull; Offline</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Screenshot Gallery / Showcase Carousel -->
+        <section class="py-20 sm:py-28 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-muted block mb-2">Showcase</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-bone tracking-tight">
+                            No algorithms. No audience. Just you.
+                        </h2>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="flex items-center gap-3">
+                        <button id="carousel-prev" 
+                                type="button" 
+                                aria-label="Scroll left in screenshot gallery" 
+                                class="w-10 h-10 rounded-xl bg-surface border border-hairline text-muted hover:text-bone hover:border-bone/40 transition-all flex items-center justify-center active:scale-95">
+                            <svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+                        </button>
+                        <button id="carousel-next" 
+                                type="button" 
+                                aria-label="Scroll right in screenshot gallery" 
+                                class="w-10 h-10 rounded-xl bg-surface border border-hairline text-muted hover:text-bone hover:border-bone/40 transition-all flex items-center justify-center active:scale-95">
+                            <svg class="w-5 h-5 stroke-current stroke-2 fill-none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Scrollable Gallery Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="screenshot-carousel" 
+                     class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory py-4 px-2 scroll-smooth"
+                     role="region" 
+                     aria-label="App screenshots gallery"
+                     tabindex="0">
+                    
+                    <!-- Slide 1: Feed -->
+                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
+                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
+                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
+                                <img src="/assets/timeline/screenshots/01-feed.png" 
+                                     alt="Social Media For One screenshot" 
+                                     width="1170" 
+                                     height="2532"
+                                     loading="lazy" 
+                                     class="w-full h-full object-cover select-none pointer-events-none" />
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 01</span>
+                            <h4 class="text-sm sm:text-base font-semibold text-bone">Social Media For One</h4>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Composer -->
+                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
+                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
+                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
+                                <img src="/assets/timeline/screenshots/02-composer.png" 
+                                     alt="Text, Photos, Voice Memos screenshot" 
+                                     width="1170" 
+                                     height="2532"
+                                     loading="lazy" 
+                                     class="w-full h-full object-cover select-none pointer-events-none" />
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 02</span>
+                            <h4 class="text-sm sm:text-base font-semibold text-bone">Text, Photos, Voice Memos</h4>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Tags -->
+                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
+                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
+                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
+                                <img src="/assets/timeline/screenshots/03-tags.png" 
+                                     alt="Organize With #Hashtags screenshot" 
+                                     width="1170" 
+                                     height="2532"
+                                     loading="lazy" 
+                                     class="w-full h-full object-cover select-none pointer-events-none" />
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 03</span>
+                            <h4 class="text-sm sm:text-base font-semibold text-bone">Organize With #Hashtags</h4>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Biometric Lock -->
+                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
+                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
+                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
+                                <img src="/assets/timeline/screenshots/04-privacy.png" 
+                                     alt="Biometric Lock screenshot" 
+                                     width="1170" 
+                                     height="2532"
+                                     loading="lazy" 
+                                     class="w-full h-full object-cover select-none pointer-events-none" />
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 04</span>
+                            <h4 class="text-sm sm:text-base font-semibold text-bone">Biometric Lock.</h4>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Curated Themes -->
+                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
+                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
+                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
+                                <img src="/assets/timeline/screenshots/05-themes.png" 
+                                     alt="Curated Themes screenshot" 
+                                     width="1170" 
+                                     height="2532"
+                                     loading="lazy" 
+                                     class="w-full h-full object-cover select-none pointer-events-none" />
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 05</span>
+                            <h4 class="text-sm sm:text-base font-semibold text-bone">Curated Themes.</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Pre-Footer Support / Contact Callout -->
+        <section class="py-16 sm:py-20 border-t border-hairline bg-canvas">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-xs font-mono uppercase tracking-widest text-muted block mb-3">Support &amp; Feedback</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-bone mb-4">
+                    Have questions or feedback?
+                </h3>
+                <p class="text-muted text-sm sm:text-base max-w-lg mx-auto mb-8">
+                    We welcome feature suggestions, bug reports, and feedback from our early testers. Reach out directly to the engineering team.
+                </p>
+                <a href="mailto:timeline@kamalbramwell.com" 
+                   class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface border border-hairline text-bone font-mono text-sm hover:border-bone/50 hover:bg-surface-hover transition-all shadow-md">
+                    <!-- Mail Icon -->
+                    <svg class="w-4 h-4 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span>timeline@kamalbramwell.com</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 5. Footer & Legal Alignment -->
+    <footer class="border-t border-hairline bg-oled py-12 sm:py-16 text-muted text-xs font-mono">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <!-- Branding & Attribution -->
+                <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+                    <a href="/timeline" class="font-bold text-sm text-bone tracking-tight">timeline</a>
+                    <span class="hidden sm:inline text-hairline">&bull;</span>
+                    <span>Crafted by <a href="/" class="text-bone hover:underline">Kamal Bramwell</a>.</span>
+                    <span class="hidden sm:inline text-hairline">&bull;</span>
+                    <span>All data stays on your device.</span>
+                </div>
+
+                <!-- Legal Links -->
+                <div class="flex items-center gap-6">
+                    <a href="/timeline/privacy" class="hover:text-bone transition-colors underline-offset-4 hover:underline">
+                        Privacy Policy
+                    </a>
+                    <a href="mailto:timeline@kamalbramwell.com" class="hover:text-bone transition-colors underline-offset-4 hover:underline">
+                        Support
+                    </a>
+                    <a href="/" class="hover:text-bone transition-colors underline-offset-4 hover:underline">
+                        kamalbramwell.com &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-hairline/40 text-center text-[11px] text-muted/60">
+                &copy; 2026 Kamal Bramwell. Timeline: Private Microjournal is a trademark of Kamal Bramwell. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carousel Interactivity Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('screenshot-carousel');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+
+            if (carousel && prevBtn && nextBtn) {
+                const scrollStep = 340; // width of card + gap
+
+                prevBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                });
+
+                // Keyboard arrow navigation when carousel has focus
+                carousel.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                    } else if (e.key === 'ArrowRight') {
+                        carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
