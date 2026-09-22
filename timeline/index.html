@@ -177,56 +177,17 @@
 
             <!-- Hero Mockup Preview -->
             <div class="relative max-w-sm sm:max-w-md mx-auto">
-                <!-- Device Glow Effect -->
-                <div class="absolute -inset-1.5 bg-gradient-to-b from-white/15 to-transparent rounded-[52px] blur-xl opacity-60 -z-10" aria-hidden="true"></div>
+                <!-- Subtle Ambient Glow -->
+                <div class="absolute -inset-4 bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent rounded-3xl blur-2xl opacity-70 -z-10" aria-hidden="true"></div>
 
-                <!-- Realistic Titanium/OLED Device Frame -->
-                <div class="relative bg-canvas p-2.5 sm:p-3 rounded-[46px] sm:rounded-[52px] ring-1 ring-white/15 shadow-device">
-                    <!-- Outer Hairline & Speaker Notch -->
-                    <div class="relative rounded-[38px] sm:rounded-[42px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5]">
-                        <!-- Dynamic Island / Speaker Pill -->
-                        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20 flex items-center justify-between px-2.5 border border-white/10" aria-hidden="true">
-                            <span class="w-2 h-2 rounded-full bg-neutral-900 border border-neutral-700"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-950/60 border border-indigo-500/30"></span>
-                        </div>
-
-                        <!-- Screenshot Image with Fallback -->
-                        <picture>
-                            <source srcset="/assets/timeline/screenshots/01-feed.png" type="image/png">
-                            <img src="/assets/timeline/screenshots/01-feed.png" 
-                                 alt="Timeline App - Social Media for One feed interface" 
-                                 width="1170" 
-                                 height="2532"
-                                 fetchpriority="high"
-                                 class="w-full h-full object-cover object-top select-none pointer-events-none"
-                                 onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
-                        </picture>
-
-                        <!-- High-Fidelity Wireframe Fallback (revealed only if image fails) -->
-                        <div class="hidden w-full h-full bg-canvas p-6 pt-12 flex flex-col justify-between text-left font-mono">
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between pb-3 border-b border-hairline">
-                                    <span class="text-xs text-muted">09:41</span>
-                                    <span class="text-xs font-bold text-bone">timeline</span>
-                                    <span class="text-xs text-muted">100%</span>
-                                </div>
-                                <div class="p-4 rounded-xl bg-surface border border-hairline space-y-2">
-                                    <span class="text-[10px] text-muted">JUST NOW &bull; #THOUGHTS</span>
-                                    <p class="text-sm text-bone font-sans">No likes. No comments. Just pure, uninhibited thought capture.</p>
-                                </div>
-                                <div class="p-4 rounded-xl bg-surface border border-hairline space-y-2">
-                                    <span class="text-[10px] text-muted">2H AGO &bull; VOICE MEMO</span>
-                                    <div class="flex items-center gap-2 text-xs text-bone">
-                                        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                                        <span>0:42 &bull; Spontaneous Voice Note</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center py-2 text-[11px] text-muted border-t border-hairline">
-                                100% Local SQLite &bull; Private
-                            </div>
-                        </div>
-                    </div>
+                <!-- Clean Display Container for App Store Mockup -->
+                <div class="relative rounded-3xl overflow-hidden border border-[#222227]/60 bg-surface/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] transition-all">
+                    <img src="/assets/timeline/screenshots/01-feed.png" 
+                         alt="Timeline App - Social Media for One feed interface" 
+                         width="1284" 
+                         height="2778"
+                         fetchpriority="high"
+                         class="w-full h-auto object-contain block select-none pointer-events-none" />
                 </div>
             </div>
         </section>
@@ -388,90 +349,80 @@
                      tabindex="0">
                     
                     <!-- Slide 1: Feed -->
-                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
-                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
-                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
-                                <img src="/assets/timeline/screenshots/01-feed.png" 
-                                     alt="Social Media For One screenshot" 
-                                     width="1170" 
-                                     height="2532"
-                                     loading="lazy" 
-                                     class="w-full h-full object-cover select-none pointer-events-none" />
-                            </div>
+                    <div class="flex-none w-[270px] sm:w-[310px] snap-center group">
+                        <div class="rounded-2xl sm:rounded-3xl overflow-hidden border border-[#222227]/60 bg-surface/30 shadow-[0_15px_35px_rgba(0,0,0,0.7)] group-hover:border-muted/40 transition-all">
+                            <img src="/assets/timeline/screenshots/01-feed.png" 
+                                 alt="Social Media For One screenshot" 
+                                 width="1284" 
+                                 height="2778"
+                                 loading="lazy" 
+                                 class="w-full h-auto object-contain block select-none pointer-events-none" />
                         </div>
-                        <div class="mt-4 text-center">
+                        <div class="mt-3.5 text-center">
                             <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 01</span>
                             <h4 class="text-sm sm:text-base font-semibold text-bone">Social Media For One</h4>
                         </div>
                     </div>
 
                     <!-- Slide 2: Composer -->
-                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
-                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
-                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
-                                <img src="/assets/timeline/screenshots/02-composer.png" 
-                                     alt="Text, Photos, Voice Memos screenshot" 
-                                     width="1170" 
-                                     height="2532"
-                                     loading="lazy" 
-                                     class="w-full h-full object-cover select-none pointer-events-none" />
-                            </div>
+                    <div class="flex-none w-[270px] sm:w-[310px] snap-center group">
+                        <div class="rounded-2xl sm:rounded-3xl overflow-hidden border border-[#222227]/60 bg-surface/30 shadow-[0_15px_35px_rgba(0,0,0,0.7)] group-hover:border-muted/40 transition-all">
+                            <img src="/assets/timeline/screenshots/02-composer.png" 
+                                 alt="Text, Photos, Voice Memos screenshot" 
+                                 width="1284" 
+                                 height="2778"
+                                 loading="lazy" 
+                                 class="w-full h-auto object-contain block select-none pointer-events-none" />
                         </div>
-                        <div class="mt-4 text-center">
+                        <div class="mt-3.5 text-center">
                             <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 02</span>
                             <h4 class="text-sm sm:text-base font-semibold text-bone">Text, Photos, Voice Memos</h4>
                         </div>
                     </div>
 
                     <!-- Slide 3: Tags -->
-                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
-                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
-                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
-                                <img src="/assets/timeline/screenshots/03-tags.png" 
-                                     alt="Organize With #Hashtags screenshot" 
-                                     width="1170" 
-                                     height="2532"
-                                     loading="lazy" 
-                                     class="w-full h-full object-cover select-none pointer-events-none" />
-                            </div>
+                    <div class="flex-none w-[270px] sm:w-[310px] snap-center group">
+                        <div class="rounded-2xl sm:rounded-3xl overflow-hidden border border-[#222227]/60 bg-surface/30 shadow-[0_15px_35px_rgba(0,0,0,0.7)] group-hover:border-muted/40 transition-all">
+                            <img src="/assets/timeline/screenshots/03-tags.png" 
+                                 alt="Organize With #Hashtags screenshot" 
+                                 width="1284" 
+                                 height="2778"
+                                 loading="lazy" 
+                                 class="w-full h-auto object-contain block select-none pointer-events-none" />
                         </div>
-                        <div class="mt-4 text-center">
+                        <div class="mt-3.5 text-center">
                             <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 03</span>
                             <h4 class="text-sm sm:text-base font-semibold text-bone">Organize With #Hashtags</h4>
                         </div>
                     </div>
 
                     <!-- Slide 4: Biometric Lock -->
-                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
-                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
-                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
-                                <img src="/assets/timeline/screenshots/04-privacy.png" 
-                                     alt="Biometric Lock screenshot" 
-                                     width="1170" 
-                                     height="2532"
-                                     loading="lazy" 
-                                     class="w-full h-full object-cover select-none pointer-events-none" />
-                            </div>
+                    <div class="flex-none w-[270px] sm:w-[310px] snap-center group">
+                        <div class="rounded-2xl sm:rounded-3xl overflow-hidden border border-[#222227]/60 bg-surface/30 shadow-[0_15px_35px_rgba(0,0,0,0.7)] group-hover:border-muted/40 transition-all">
+                            <img src="/assets/timeline/screenshots/04-privacy.png" 
+                                 alt="Biometric Lock screenshot" 
+                                 width="1284" 
+                                 height="2778"
+                                 loading="lazy" 
+                                 class="w-full h-auto object-contain block select-none pointer-events-none" />
                         </div>
-                        <div class="mt-4 text-center">
+                        <div class="mt-3.5 text-center">
                             <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 04</span>
                             <h4 class="text-sm sm:text-base font-semibold text-bone">Biometric Lock.</h4>
                         </div>
                     </div>
 
                     <!-- Slide 5: Curated Themes -->
-                    <div class="flex-none w-[280px] sm:w-[320px] snap-center group">
-                        <div class="bg-surface p-2 rounded-[36px] border border-hairline shadow-device group-hover:border-muted/50 transition-all">
-                            <div class="rounded-[28px] overflow-hidden bg-oled border border-hairline/80 aspect-[9/19.5] relative">
-                                <img src="/assets/timeline/screenshots/05-themes.png" 
-                                     alt="Curated Themes screenshot" 
-                                     width="1170" 
-                                     height="2532"
-                                     loading="lazy" 
-                                     class="w-full h-full object-cover select-none pointer-events-none" />
-                            </div>
+                    <div class="flex-none w-[270px] sm:w-[310px] snap-center group">
+                        <div class="rounded-2xl sm:rounded-3xl overflow-hidden border border-[#222227]/60 bg-surface/30 shadow-[0_15px_35px_rgba(0,0,0,0.7)] group-hover:border-muted/40 transition-all">
+                            <img src="/assets/timeline/screenshots/05-themes.png" 
+                                 alt="Curated Themes screenshot" 
+                                 width="1284" 
+                                 height="2778"
+                                 loading="lazy" 
+                                 class="w-full h-auto object-contain block select-none pointer-events-none" />
                         </div>
-                        <div class="mt-4 text-center">
+                        <div class="mt-3.5 text-center">
                             <span class="text-xs font-mono uppercase tracking-wider text-muted block mb-1">Slide 05</span>
                             <h4 class="text-sm sm:text-base font-semibold text-bone">Curated Themes.</h4>
                         </div>
@@ -544,22 +495,25 @@
             const nextBtn = document.getElementById('carousel-next');
 
             if (carousel && prevBtn && nextBtn) {
-                const scrollStep = 340; // width of card + gap
+                const getScrollStep = () => {
+                    const firstCard = carousel.querySelector('.snap-center');
+                    return firstCard ? firstCard.offsetWidth + 24 : 320;
+                };
 
                 prevBtn.addEventListener('click', () => {
-                    carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                    carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
                 });
 
                 nextBtn.addEventListener('click', () => {
-                    carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                    carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
                 });
 
                 // Keyboard arrow navigation when carousel has focus
                 carousel.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowLeft') {
-                        carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                        carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
                     } else if (e.key === 'ArrowRight') {
-                        carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                        carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
                     }
                 });
             }
