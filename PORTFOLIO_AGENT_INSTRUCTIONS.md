@@ -9,7 +9,7 @@ You are Google Jules, executing directly inside an already initialized repositor
 ## 1\. Context & Profile Information
 
 - **Name**: Kamal Decadova Bramwell (Kam)  
-- **Professional Title**: Software Architect & Senior Mobile Engineer  
+- **Professional Title**: Staff Mobile Engineer  
 - **Core Specialties**:  
 - **Email**: peaks\_barques0c@icloud.com  
   - Kotlin Multiplatform (KMP) & Compose Multiplatform (CMP)  
@@ -68,8 +68,8 @@ Generate semantic, fully accessible HTML5 markup containing the following sectio
 
 1. **\<head\> Setup & SEO Metadata**:  
      
-   - Title: Kamal Bramwell | Software Architect & Senior Mobile Engineer  
-   - Responsive viewport, meta description, and keywords (Kotlin Multiplatform, Android, iOS, Software Architecture).  
+   - Title: Kamal Bramwell | Staff Mobile Engineer  
+   - Responsive viewport, meta description, and keywords (Kotlin Multiplatform, Android, iOS, Mobile Architecture).  
    - Open Graph (OG) tags (og:title, og:description, og:url, og:type=website, og:image).  
    - Tailwind CSS CDN and Google Fonts (Inter / JetBrains Mono).
 
@@ -88,7 +88,7 @@ Generate semantic, fully accessible HTML5 markup containing the following sectio
 
 3. **Hero Section**:  
      
-   - Prominent headline: Software Architect & Senior Mobile Engineer specializing in Kotlin Multiplatform and cross-platform native experiences.  
+   - Prominent headline: Staff Mobile Engineer specializing in Kotlin Multiplatform and cross-platform native experiences.  
    - Concise value proposition: Building high-performance mobile apps, clean-room architectures, and developer-first products.  
    - Primary Call-to-Actions (CTAs):  
      - View Projects (anchor link to \#projects)  
